@@ -1,0 +1,6 @@
+Usage: delete-old-blobs [options]
+
+List of options:
+
+	-a	The Azure account name to manage
+	-k	The Azure account key for the account to manage

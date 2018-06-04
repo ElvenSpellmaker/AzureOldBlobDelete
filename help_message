@@ -4,3 +4,4 @@ List of options:
 
 	-a	The Azure account name to manage
 	-k	The Azure account key for the account to manage
+	-d	The amount of days to use by default, defaults to 90 days

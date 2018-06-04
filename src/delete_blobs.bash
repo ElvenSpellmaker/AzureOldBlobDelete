@@ -9,7 +9,7 @@ while read -r CONTAINER; do
 	SUFFIX="$(grep -oP -- '-\K(nodelete|\d{1,2})$' <<< "$CONTAINER")"
 
 	if [ "$SUFFIX" == '' ]; then
-		DAYS="90"
+		DAYS="$DEFAULT_DAYS"
 	elif [ "$SUFFIX" == 'nodelete' ]; then
 		echo "The container '$CONTAINER' has the 'nodelete' suffix, skipping..!"
 		continue

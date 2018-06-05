@@ -5,6 +5,10 @@ CONTAINERS=$(az storage container list \
 	-o tsv \
 )
 
+# Can't resolve this statically...
+# shellcheck source=/dev/null
+source "$SOURCE_DIR/${DELETE_TYPE}_delete_blobs.bash"
+
 while read -r CONTAINER; do
 	SUFFIX="$(grep -oP -- '-\K(nodelete|\d{1,2})$' <<< "$CONTAINER")"
 
@@ -19,15 +23,9 @@ while read -r CONTAINER; do
 
 	[ "$DAYS" -eq 1 ] && ONE_SUFFIX='' || ONE_SUFFIX='s'
 
-	DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ" --date="$DAYS days ago")"
-
 	echo "Deleting all blobs older than $DAYS day$ONE_SUFFIX in container '$CONTAINER'..."
 
-	az storage blob delete-batch \
-		--account-name "$AZURE_ACCOUNT_NAME" \
-		--account-key "$AZURE_ACCOUNT_KEY" \
-		--source "$CONTAINER" \
-		--if-unmodified-since "$DATE"
+	delete_blobs
 
 	echo
 done <<< "$CONTAINERS"

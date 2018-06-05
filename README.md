@@ -15,4 +15,4 @@ the specified number of days.
 
 Usage:
 
-`delete-old-blobs -a 'myaccountname' -k 'myaccountkey'`
+`delete-old-blobs -a 'myaccountname' -k 'myaccountkey'` [-d 90]

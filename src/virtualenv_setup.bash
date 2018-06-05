@@ -2,6 +2,7 @@ VIRTUALENV_DIRECTORY='/tmp/python-blob-delete'
 
 [ ! -x "$VIRTUALENV_DIRECTORY/bin/python" ] && virtualenv "$VIRTUALENV_DIRECTORY"
 
+# shellcheck source=/dev/null
 source "$VIRTUALENV_DIRECTORY/bin/activate"
 
 pip install --upgrade 'pip==10.0.1'

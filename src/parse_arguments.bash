@@ -3,15 +3,20 @@ if [ $# -eq 0 ] || [ "$1" == "--help" ]; then
 	exit
 fi
 
-while getopts ":a: :k:" option
+while getopts ":a: :k: :d" option
 do
+	# shellcheck disable=SC2034
 	case "${option}"
 	in
 		a) AZURE_ACCOUNT_NAME=${OPTARG};;
 		k) AZURE_ACCOUNT_KEY=${OPTARG};;
+		d) DEFAULT_DAYS=${OPTARG};;
 		?) echo "Error: Invalid option was specified: ${OPTARG}";;
 	esac
 done
+
+# shellcheck disable=SC2034
+[[ "$DEFAULT_DAYS" =~ ^[0-9]+$ ]] || DEFAULT_DAYS='90'
 
 check_variable()
 {

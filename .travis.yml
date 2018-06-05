@@ -1,0 +1,2 @@
+language: c
+script: shellcheck delete-old-blobs src/* -s bash 

@@ -1,6 +1,8 @@
 Azure Old Blob Deletion
 =======================
 
+[![Build Status](https://travis-ci.com/ElvenSpellmaker/AzureOldBlobDelete.svg?branch=master)](https://travis-ci.com/ElvenSpellmaker/AzureOldBlobDelete)
+
 This script will delete all blobs in a storage account not modified for a
 certain number of days.
 

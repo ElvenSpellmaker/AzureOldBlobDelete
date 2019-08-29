@@ -23,7 +23,7 @@ done
 
 check_variable()
 {
-	if [ ! -n "${!1}" ]; then
+	if [ -z "${!1}" ]; then
 		echo "'$1', '-$2' is required!" >&2
 		exit 1
 	fi
